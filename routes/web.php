@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
-
+use App\Http\Controllers\Students;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,3 +19,5 @@ use App\Http\Controllers\ProductController;
 // });
 
 Route::resource('products', ProductController::class);
+
+Route::resource('students', Students::class);
