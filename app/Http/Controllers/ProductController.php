@@ -78,7 +78,7 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        
+        // dd($product->id);
         $request->validate([
             'name' => 'required',
             'detail' => 'required',
@@ -88,8 +88,11 @@ class ProductController extends Controller
         if ($request->image) {
             $fileName = time() . '.' . $request->image->extension();
             $request->image->move(public_path('images'), $fileName);
-            if ($product->image) {
-                Storage::delete('public/images/' . $product->image);
+            $path = 'images/'.$product->image;
+            if(File::exists($path))
+            { 
+                // dd("Hello");
+                File::delete($path);
             }
         }else{
             $fileName = $product->image;
